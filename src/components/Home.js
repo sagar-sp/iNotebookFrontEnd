@@ -1,16 +1,14 @@
-import React,{useContext} from "react";
-import noteContext from "../context/notes/noteContext"
+import Notes from "./Notes";
+
 
 const Home = () => {
-  const context = useContext(noteContext);
-  const {notes,setNotes} = context;
   return (
     <div>
       <div className="container my-3">
         <h1>Add a Note</h1>
         <form className="my-3">
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
@@ -21,7 +19,7 @@ const Home = () => {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
@@ -42,12 +40,7 @@ const Home = () => {
           </button>
         </form>
       </div>
-      <div className="container my-3">
-        <h1>Your Note</h1>
-        {notes.map((note)=>{
-            return note.title;
-        })}
-      </div>
+      <Notes/>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { useState } from "react";
 const NotesState = (props)=>{
     const notesinitial = [
         {
-            "_id": "6134d5c8baa545b5cfbd41cb",
+            "_id": "6134d5cdd8baa545b5cfbd41cb",
             "user": "6134473c5c3525f9fa0c8a07",
             "title": "My title",
             "description": "Please Wake Up early",
@@ -13,14 +13,41 @@ const NotesState = (props)=>{
             "__v": 0
         },
         {
-            "_id": "6134d5c9baa545b5cfbd41cd",
+            "_id": "6134d5c9baqwqa545b5cbd41cd",
             "user": "6134473c5c3525f9fa0c8a07",
             "title": "My title",
             "description": "Please Wake Up early",
             "tag": "personal",
             "date": "2021-09-05T14:35:53.719Z",
             "__v": 0
-        }
+        },  
+        {
+            "_id": "6134d5c9baqqa545bbd41cd",
+            "user": "6134473c5c3525f9fa0c8a07",
+            "title": "My title",
+            "description": "Please Wake Up early",
+            "tag": "personal",
+            "date": "2021-09-05T14:35:53.719Z",
+            "__v": 0
+        },
+        {
+            "_id": "6134d5c9ewwbaa545b5fbd41cd",
+            "user": "6134473c5c3525f9fa0c8a07",
+            "title": "My title",
+            "description": "Please Wake Up early",
+            "tag": "personal",
+            "date": "2021-09-05T14:35:53.719Z",
+            "__v": 0
+        },  
+        {
+            "_id": "6134d5c9bdsaa545bd41cd",
+            "user": "6134473c5c3525f9fa0c8a07",
+            "title": "My title",
+            "description": "Please Wake Up early",
+            "tag": "personal",
+            "date": "2021-09-05T14:35:53.719Z",
+            "__v": 0
+        },
     ]
     const [notes, setNotes] = useState(notesinitial)
     return(
