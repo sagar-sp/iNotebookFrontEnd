@@ -5,6 +5,7 @@ const NoteItem = (props) => {
   const context = useContext(noteContext);
   const { deleteNote } = context;
   const { note } = props;
+  // console.log(note._id)
   return (
     <div className="col-md-3">
       <div className="card m-3">
