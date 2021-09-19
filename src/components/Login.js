@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
-  const [credentials, setCredentials] = useState({email:"",password:""});
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   let history = useHistory();
-//   const [password, setPassword] = useState("");
+  //   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,16 +13,20 @@ const Login = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email:credentials.email, password:credentials.password }),
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password,
+      }),
     });
     const json = await response.json();
     console.log(json);
-    if(json.success){
-        //save the auth token and redirect
-        localStorage.setItem('token',json.authtoken);
-        history.push("/");
-    }else{
-        alert('Invalid Credentials')
+    //save the auth token and redirect
+    if (json.success) {
+      localStorage.setItem("token", json.authtoken);
+      history.push("/");
+      props.showAlert("Logged In Successfully", "success");
+    } else {
+      props.showAlert("invalid details", "danger");
     }
   };
 

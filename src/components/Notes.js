@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
   const [note, setNote] = useState({
@@ -36,11 +36,12 @@ const Notes = () => {
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refclose.current.click();
+    props.showAlert("Updated Successfully", "success");
   };
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
 
       <button
         ref={ref}
@@ -88,7 +89,8 @@ const Notes = () => {
                         name="etitle"
                         value={note.etitle}
                         onChange={onChange}
-                        minLength={5} required
+                        minLength={5}
+                        required
                       />
                     </div>
                     <div className="mb-3">
@@ -102,7 +104,8 @@ const Notes = () => {
                         name="edescription"
                         value={note.edescription}
                         onChange={onChange}
-                        minLength={5} required
+                        minLength={5}
+                        required
                       />
                     </div>
                     <div className="mb-3">
@@ -132,7 +135,9 @@ const Notes = () => {
                 Close
               </button>
               <button
-               disabled={note.etitle.length < 5 || note.edescription.length < 5}
+                disabled={
+                  note.etitle.length < 5 || note.edescription.length < 5
+                }
                 type="button"
                 className="btn btn-primary"
                 onClick={handleClick}
@@ -146,11 +151,16 @@ const Notes = () => {
       <div className="row my-3">
         <h1>Your Note</h1>
         <div className="container mx-2">
-        {notes.length === 0 && 'No Notes to dispay'}
+          {notes.length === 0 && "No Notes to dispay"}
         </div>
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} updateNote={updateNote} note={note} />
+            <NoteItem
+              key={note._id}
+              updateNote={updateNote}
+              showAlert={props.showAlert}
+              note={note}
+            />
           );
         })}
       </div>
